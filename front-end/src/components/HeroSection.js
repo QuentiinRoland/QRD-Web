@@ -5,20 +5,6 @@ const HeroSection = () => {
     <div className="relative flex items-center justify-between px-4 pt-32 pb-48 bg-black overflow-hidden">
       <div className="absolute w-[40vw] h-[40vw] rounded-full bg-gradient-to-t from-violet-custom to-purple-custom opacity-30 blur-[80px] -left-[10%] top-[10%]"></div>
       <div className="absolute w-[35vw] h-[35vw] rounded-full bg-orange-custom opacity-30 blur-[80px] -right-[5%] top-[50%]"></div>
-
-      <div className="absolute w-16 h-8 border border-white opacity-40 rotate-12 top-[15%] left-[15%]"></div>
-      
-      <div className="absolute w-16 h-8 border border-white opacity-40 rotate-12 top-[15%] left-[15%]"></div>
-      
-      <div className="absolute w-16 h-16 border border-white opacity-40 top-[30%] right-[15%]" 
-           style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%)' }}></div>
-    
-      <div className="absolute w-16 h-16 border border-white opacity-40 bottom-[30%] left-[15%]" 
-           style={{ clipPath: 'polygon(0 100%, 0 0, 100% 100%)' }}></div>
-   
-      <div className="absolute w-12 h-12 rounded-full border border-white opacity-40 bottom-[20%] right-[25%]"></div>
-      
-      <div className="absolute w-4 h-20 border border-white opacity-40 rotate-45 top-[20%] right-[35%]"></div>
       
       <div className="max-w-7xl mx-auto relative z-10 flex w-full">
         <div className='flex flex-col w-1/2'>

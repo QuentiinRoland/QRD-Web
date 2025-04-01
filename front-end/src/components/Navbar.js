@@ -7,7 +7,7 @@ const Navbar = () => {
             {/* Logo et nom (à gauche) */}
             <div className='flex items-center'>
                 <img src='/QRDLogo.png' alt='' width={60} height={60} className="mr-2" />
-                <p className="font-medium">QRD Web</p>
+                <p className="font-medium">Roland Web</p>
             </div>
             
             {/* Navigation centrale - positionnée absolument pour être vraiment au centre */}
