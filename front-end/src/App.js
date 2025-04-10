@@ -7,6 +7,8 @@ import BenefitsSection from './components/Benefits/BenefitsSection';
 import { Spacer } from './components/Spacer';
 import OfferSection from './components/OfferSection/OfferSection';
 import { ProjectSection } from './components/ProjectSection/ProjectSection';
+import { PricingSection } from './components/PricingSection/PricingSection';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
       <OfferSection />
       <Spacer size='lg' />
       <ProjectSection />
+      <Spacer size='lg' />
+      <PricingSection />
+      <Footer />
     </div>
   );
 }

@@ -33,13 +33,13 @@ const BenefitsSection = () => {
                 <p>Bénéficiez de l'expertise d'une agence spécialisée en solutions terrain avec des écosystèmes digitaux conçus pour maximiser votre efficacité ! </p>
             </div>
             <div className='grid grid-col-1 md:grid-cols-2 gap-6'>
-                <div className='bg-gray-500 flex flex-col items-center'>
+                <div className='flex flex-col items-center'>
                     <h3>AVANT Roland Web: La réalité du terrain aujourd'hui</h3>
-                    <img />
+                    <img src='/Unoptimised.png' alt='' className='w-full'/>
                 </div>
-                <div className='bg-gray-500 flex flex-col items-center'>
+                <div className='flex flex-col items-center'>
                     <h3>APRÈS QRD WEB : Votre activité optimisée</h3>
-                    <img />
+                    <img src='/Optimised.png' alt='' className='w-full'/>
                 </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-12">
