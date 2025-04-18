@@ -2,11 +2,11 @@ import React from 'react'
 
 const OfferSection = () => {
   return (
-    <div className='flex flex-col max-w-7xl mx-auto'>
-      <div className='flex flex-col text-center gap-2 mb-8'>
-        <p>Solutions</p>
-        <h2 className='text-2xl font-bold'>Nos solutions Digitales</h2>
-        <p>Nous développons des écosystèmes digitaux sur mesure qui transforment les opérations terrain et stimulent votre croissance</p>
+    <div className='flex flex-col max-w-7xl mx-auto py-24'>
+      <div className='flex flex-col justify-center items-center gap-2 mb-8'>
+        <span className='bg-purple-custom/80 py-2 px-3 inline-block rounded-full w-fit text-white text-sm'>Solutions</span>
+        <h2 className='text-4xl font-bold '>Nos solutions Digitales</h2>
+        <p className='text-lg max-w-xl text-center bg-gradient-to-b from-black to-black/60 inline-block text-transparent bg-clip-text'>Nous développons des écosystèmes digitaux sur mesure qui transforment les opérations terrain et stimulent votre croissance</p>
       </div>
       
       <div className='grid gap-4' style={{

@@ -1,19 +1,28 @@
-const benefitsData = [
+import { TimerReset, Database, TrendingUp, PuzzleIcon } from "lucide-react";
+
+export const benefitsData = [
     {
         id: 1,
-        name: "Temps gagné",
-        description : "Réduisez votre paperasse de 68%, Automatisez vos tâches administratives, Passez plus de temps sur votre expertise métier",
-        Picture : "/hourglass.png"
+        name: "Efficacité maximale",
+        description: "Automatisation des processus administratifs, création de documents en quelques clics, gain de temps de 94% sur les tâches répétitives.",
+        icon: <TimerReset />
     },
     {
         id: 2,
-        name: "Meilleure organisation",
-        description : "Centralisez toutes vos informations, Accédez à vos données même hors connexion, Synchronisez vos équipes en temps réelr"
+        name: "Centralisation intelligente",
+        description: "Toutes vos données accessibles instantanément, historique client complet et synchronisation en temps réel entre tous vos appareils.",
+        icon: <Database />
     },
     {
         id: 3,
-        name: "Plus de revenus",
-        description : "Facturez plus rapidement (23 jours → 5 jours), Augmentez votre volume d'interventions de 27%, Générez plus de recommandations clients"
+        name: "Présence digitale optimisée",
+        description: "Site web professionnel générant des leads, référencement local performant et image de marque renforcée auprès de vos clients.",
+        icon: <TrendingUp />
     },
-
-]
+    {
+        id: 4,
+        name: "Écosystème sur mesure",
+        description: "Solution développée spécifiquement pour votre métier, prix fixe sans abonnement, interfaces intuitives adaptées au travail terrain.",
+        icon: <PuzzleIcon />
+    },
+];

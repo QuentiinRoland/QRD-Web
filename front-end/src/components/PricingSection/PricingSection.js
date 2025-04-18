@@ -8,7 +8,7 @@ const pricingData = [
     price: "1299€",
     buttonText: "Recevoir un aperçu personnalisé",
     imageSrc: "/WebsiteAppCard.png",
-    deliveryTime: "Livraison : 5 à 7 jours",
+    deliveryTime: "Livraison : 1 à 2 semaines",
     features: [
       "Maquette web-sur mesure",
       "Site internet",
@@ -57,8 +57,9 @@ const pricingData = [
 export const PricingSection = () => {
   return (
     <div className="bg-black text-white">
-      <div className="flex flex-col max-w-7xl mx-auto py-16 px-4">
-        <div className="flex flex-col gap-4 text-center mb-12">
+      <div className="flex flex-col max-w-7xl mx-auto py-24 px-4">
+        <div className="flex flex-col gap-4 text-center items-center mb-12">
+          <span className='bg-violet-custom/80 py-2 px-3 inline-block rounded-full w-fit text-white text-sm'>Nos tarifs</span>
           <h2 className="text-4xl font-bold">Des solutions digitales professionnelles à prix transparent</h2>
           <p className="bg-gradient-to-b from-white to-white/50 inline-block text-transparent bg-clip-text text-xl max-w-3xl mx-auto">Nous créons des outils numériques adaptés aux besoins des entrepreneurs, artisans et professionnels. Choisissez la solution qui correspond à vos ambitions et à votre budget.</p>
         </div>
@@ -73,9 +74,9 @@ export const PricingSection = () => {
               />
               
               <div className="absolute inset-0">
-                <div className="absolute top-[70px] left-0 right-0 px-6">
+                <div className="absolute top-[60px] left-0 right-0 px-6">
                   <h3 className="text-3xl font-bold mb-2 text-center">{plan.title}</h3>
-                  <p className="bg-gradient-to-b from-white to-white/50 inline-block text-transparent bg-clip-text text-sm mb-4 text-center px-8">{plan.description}</p>
+                  <p className="bg-gradient-to-b from-white to-white/50 inline-block text-transparent bg-clip-text text-base mb-4 text-center px-8">{plan.description}</p>
                 </div>
                 
                 <div className="absolute top-[180px] left-0 right-0 text-center">
@@ -86,7 +87,7 @@ export const PricingSection = () => {
                 </div>
                 
                 <div className="absolute top-[245px] left-0 right-0 px-6">
-                  <button className="bg-transparent text-white py-3 px-4 w-full text-center text-sm">
+                  <button className="bg-transparent text-white py-3 px-4 w-full text-center text-base">
                     {plan.buttonText}
                   </button>
                 </div>

@@ -1,70 +1,43 @@
-import React from 'react'
+import React from 'react';
+import { Wrench, Building2, Settings, Leaf } from 'lucide-react';
 
-const Sectors = () => {
+const SectorsTable = () => {
+const sectorsList = [
+    {
+        title: "Artisans et professionnels indépendants",
+        description: "Vous êtes un plombier, électricien, menuisier ou tout autre artisan travaillant principalement seul ou avec une petite équipe ? Les artisans utilisant notre écosystème gagnent en moyenne 8 heures par semaine.",
+        icon: <Wrench className="w-8 h-8 text-violet-custom" />
+    },
+    {
+        title: "Entreprises de services locaux",
+        description: "Vous dirigez une entreprise de services intervenant quotidiennement chez vos clients ? Notre écosystème digital permet généralement une augmentation de 30% de leur capacité d'intervention après l'implémentation !",
+        icon: <Building2 className="w-8 h-8 text-purple-custom" />
+    },
+    {
+        title: "Sociétés de maintenance et SAV",
+        description: "Vous gérez un service de maintenance, un SAV ou toute activité nécessitant de nombreuses interventions quotidiennes de courte durée ? La réactivité et la traçabilité sont essentielles dans votre métier.",
+        icon: <Settings className="w-8 h-8 text-orange-custom" />
+    },
+    {
+        title: "Entreprises d'aménagement extérieur",
+        description: "Vous travaillez dans l'aménagement paysager, l'entretien d'espaces verts ou tout autre métier en extérieur ? Notre écosystème digital a été initialement développé avec des professionnels de ce secteur.",
+        icon: <Leaf className="w-8 h-8 text-purple-custom" />
+    }
+    ];
+
   return (
-    <div className='grid grid-cols-3 gap-4'>
-        <div className="relative p-6 text-white rounded-lg overflow-hidden col-span-2 bg-black">
-            <div className="absolute inset-0 z-0">
-                <img 
-                    src="/artisan.jpg" 
-                    alt="Smart Home Integration" 
-                    className="h-full w-full object-cover opacity-45"
-                />
-            </div>
-            
-            <div className="relative z-10">
-                <h3 className="text-3xl font-bold mb-2">Artisans et professionnels indépendants
-                </h3>
-                <p className="text-base">Vous êtes un plombier, électricien, menuisier ou tout autre artisan travaillant principalement seul ou avec une petite équipe ?. Les artisans utilisant notre écosystème gagnent en moyenne 8 heures par semaine - du temps</p>
-            </div>
+    <div className="grid grid-cols-2 gap-4 text-black">
+      {sectorsList.map((sector, index) => (
+        <div key={index} className="p-6 border-l border-gray-700">
+          <div className="flex items-start gap-3">
+            {sector.icon}
+            <h3 className={`text-lg font-medium ${index === 1 ? 'max-w-36': ''}`}>{sector.title}</h3>
+          </div>
+          <p className="mt-3 text-lg text-gray-700">{sector.description}</p>
         </div>
-
-        <div className="relative p-6 text-white rounded-lg overflow-hidden bg-black">
-            <div className="absolute inset-0 z-0">
-                <img 
-                    src="/companyPicture.jpg" 
-                    alt="Remote Access" 
-                    className="h-full w-full object-cover opacity-35"
-                />
-            </div>
-            
-            <div className="relative z-10">
-                <h3 className="text-3xl font-bold mb-2">Entreprises de services locaux</h3>
-                <p className="text-base">Vous dirigez une entreprise de services avec plusieurs techniciens ou équipes intervenant quotidiennement chez vos clients ? Les entreprises de services avec 5 à 15 employés constatent généralement une augmentation de 30% de leur capacité d'intervention après l'implémentation de notre système !</p>
-            </div>
-        </div>
-
-        <div className="relative p-6 text-white rounded-lg overflow-hidden bg-black">
-            <div className="absolute inset-0 z-0">
-                <img 
-                    src="/fieldBusiness.jpg" 
-                    alt="Intuitive Interface" 
-                    className="h-full w-full object-cover opacity-35"
-                />
-            </div>
-            
-            <div className="relative z-10">
-                <h3 className="text-3xl font-bold mb-2">Sociétés de maintenance et SAV</h3>
-                <p className="text-base">Vous gérez un service de maintenance, un SAV ou toute activité nécessitant de nombreuses interventions quotidiennes de courte durée ? La réactivité et la traçabilité sont essentielles dans votre métier. </p>
-            </div>
-        </div>
-
-        <div className="relative p-6 text-white rounded-lg overflow-hidden col-span-2 bg-black">
-            <div className="absolute inset-0 z-0">
-                <img 
-                    src="/fieldBusiness.jpg" 
-                    alt="Tailored Control" 
-                    className="h-full w-full object-cover opacity-35"
-                />
-            </div>
-            
-            <div className="relative z-10">
-                <h3 className="text-3xl font-bold mb-2">Entreprises d'aménagement extérieur</h3>
-                <p className="text-base">Vous travaillez dans l'aménagement paysager, l'entretien d'espaces verts ou tout autre métier en extérieur ? Notre écosystème digital a été initialement développé avec des professionnels de ce secteur et répond parfaitement à ces particularités.</p>
-            </div>
-        </div>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default Sectors
+export default SectorsTable;
