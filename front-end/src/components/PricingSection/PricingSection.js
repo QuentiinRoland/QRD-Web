@@ -79,12 +79,12 @@ export const PricingSection = () => {
                   <p className="bg-gradient-to-b from-white to-white/50 inline-block text-transparent bg-clip-text text-base mb-4 text-center px-8">{plan.description}</p>
                 </div>
                 
-                <div className="absolute top-[180px] left-0 right-0 text-center">
+                {/* <div className="absolute top-[180px] left-0 right-0 text-center">
                   <p className="text-5xl font-bold">
                     {plan.price}
                     <span className="text-lg"> HT</span>
                   </p>
-                </div>
+                </div> */}
                 
                 <div className="absolute top-[245px] left-0 right-0 px-6">
                   <button className="bg-transparent text-white py-3 px-4 w-full text-center text-base">

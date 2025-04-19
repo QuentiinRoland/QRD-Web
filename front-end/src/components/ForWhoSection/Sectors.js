@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Wrench, Building2, Settings, Leaf } from 'lucide-react';
 
 const SectorsTable = () => {
@@ -25,19 +26,59 @@ const sectorsList = [
     }
     ];
 
-  return (
-    <div className="grid grid-cols-2 gap-4 text-black">
-      {sectorsList.map((sector, index) => (
-        <div key={index} className="p-6 border-l border-gray-700">
-          <div className="flex items-start gap-3">
-            {sector.icon}
-            <h3 className={`text-lg font-medium ${index === 1 ? 'max-w-36': ''}`}>{sector.title}</h3>
-          </div>
-          <p className="mt-3 text-lg text-gray-700">{sector.description}</p>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-export default SectorsTable;
+    const containerVariants = {
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.2
+        }
+      }
+    };
+  
+    const itemVariants = {
+      hidden: { opacity: 0, x: -20 },
+      visible: {
+        opacity: 1,
+        x: 0,
+        transition: { duration: 0.5 }
+      }
+    };
+  
+    return (
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="grid grid-cols-2 gap-4 text-black"
+      >
+        {sectorsList.map((sector, index) => (
+          <motion.div 
+            key={index} 
+            variants={itemVariants}
+            className="p-6 border-l border-gray-700"
+            whileHover={{ 
+              scale: 1.03, 
+              boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+              borderLeft: "2px solid #8B5CF6" 
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <div className="flex items-start gap-3">
+              <motion.div
+                whileHover={{ rotate: 15 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                {sector.icon}
+              </motion.div>
+              <h3 className={`text-lg font-medium ${index === 1 ? 'max-w-36': ''}`}>{sector.title}</h3>
+            </div>
+            <p className="mt-3 text-lg text-gray-700">{sector.description}</p>
+          </motion.div>
+        ))}
+      </motion.div>
+    );
+  };
+  
+  export default SectorsTable;
