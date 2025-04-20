@@ -1,10 +1,13 @@
+import { animate, motion } from 'framer-motion';
 import React from 'react';
+import { useInView } from 'react-intersection-observer';
+
 
 const pricingData = [
   {
     id: 1,
     title: "Présence Express",
-    description: "Un site rapide, professionnel et optimisé pour vous trouver sur Google. Pour les Indépendants, artisans, pros",
+    description: "Un site rapide, professionnel et optimisé pour vous trouver sur Google. Pour les Indépendants, artisans, pros. Attirez de nouveaux clients et renforcez votre crédibilité professionnelle.",
     price: "1299€",
     buttonText: "Recevoir un aperçu personnalisé",
     imageSrc: "/WebsiteAppCard.png",
@@ -21,7 +24,7 @@ const pricingData = [
   {
     id: 2,
     title: "Écosystème Digital",
-    description: "Site + dashboard + app pour centraliser votre business et gagner du temps au quotidien.",
+    description: "Site + dashboard + app pour centraliser votre business et gagner du temps au quotidien. Synchronisez vos données terrain et bureau, et éliminez les erreurs de communication",
     price: "4999€",
     buttonText: "Recevoir un aperçu personnalisé",
     imageSrc: "/EcosystemCard.png",
@@ -38,7 +41,7 @@ const pricingData = [
   {
     id: 3,
     title: "Application Mobile",
-    description: "Une application personnalisée pour gérer ses clients, interventions ou devis.",
+    description: "Une application personnalisée pour gérer ses clients, interventions ou devis. Fonctionne même sans connexion internet pour ne jamais vous ralentir sur le terrain.",
     price: "2999€",
     buttonText: "Recevoir un aperçu personnalisé",
     imageSrc: "/WebsiteAppCard.png",
@@ -55,18 +58,58 @@ const pricingData = [
 ];
 
 export const PricingSection = () => {
+  const [planRef, planInView] = useInView({
+    triggerOnce : true,
+    threshold : 0.2
+  })
+
+  const openCalendly = () => {
+    window.open('https://calendly.com/rolandigital-info/30min', '_blank', 'noopener,noreferrer')
+  }
+
+  const openTypeform = () => {
+    window.open('https://form.typeform.com/to/eBpeX9mS', '_blank', 'noopener,noreferrer')
+  }
+
+
+  const containerVariants = {
+    hidden : {
+      opacity : 0,
+    },
+    visible : {
+      opacity : 1,
+      transition : {
+        staggerChildren : 0.3,
+        delayChildren : 0.4,
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0 
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
     <div className="bg-black text-white">
       <div className="flex flex-col max-w-7xl mx-auto py-24 px-4">
-        <div className="flex flex-col gap-4 text-center items-center mb-12">
+        <motion.div initial={{opacity :0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{ duration: 0.5, ease:"easeOut" }}  className="flex flex-col gap-4 text-center items-center mb-12">
           <span className='bg-violet-custom/80 py-2 px-3 inline-block rounded-full w-fit text-white text-sm'>Nos tarifs</span>
           <h2 className="text-4xl font-bold">Des solutions digitales professionnelles à prix transparent</h2>
           <p className="bg-gradient-to-b from-white to-white/50 inline-block text-transparent bg-clip-text text-xl max-w-3xl mx-auto">Nous créons des outils numériques adaptés aux besoins des entrepreneurs, artisans et professionnels. Choisissez la solution qui correspond à vos ambitions et à votre budget.</p>
-        </div>
+        </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div ref={planRef} initial="hidden" animate={planInView ? "visible" : "hidden"} variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {pricingData.map((plan) => (
-            <div key={plan.id} className="relative h-[680px] overflow-hidden">
+            <motion.div key={plan.id} variants={itemVariants} className="relative h-[680px] overflow-hidden">
               <img 
                 src={plan.imageSrc} 
                 alt={plan.title} 
@@ -79,15 +122,8 @@ export const PricingSection = () => {
                   <p className="bg-gradient-to-b from-white to-white/50 inline-block text-transparent bg-clip-text text-base mb-4 text-center px-8">{plan.description}</p>
                 </div>
                 
-                {/* <div className="absolute top-[180px] left-0 right-0 text-center">
-                  <p className="text-5xl font-bold">
-                    {plan.price}
-                    <span className="text-lg"> HT</span>
-                  </p>
-                </div> */}
-                
                 <div className="absolute top-[245px] left-0 right-0 px-6">
-                  <button className="bg-transparent text-white py-3 px-4 w-full text-center text-base">
+                  <button onClick={() => openTypeform()}className="bg-transparent text-white py-3 px-4 w-full text-center text-base">
                     {plan.buttonText}
                   </button>
                 </div>
@@ -122,9 +158,9 @@ export const PricingSection = () => {
                     </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         
         <div className="text-center mt-8 text-sm opacity-70">
           * La maintenance illimitée comprend les mises à jour de sécurité et le support technique par email.

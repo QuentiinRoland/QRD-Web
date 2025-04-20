@@ -1,6 +1,81 @@
 import { useState } from 'react';
+import { easeIn, motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 export const ProjectSection = () => {
+
+    const [headerRef, headerInView] = useInView({
+      triggerOnce : true,
+      threshold : 0.1
+    })
+    const [projectsRef, projectsInView] = useInView({
+      triggerOnce : true,
+      threshold : 0.2
+    })
+
+    const headerContainerVariants = {
+      hidden: {opacity : 0},
+      visible : {
+        opacity: 1,
+        transition : {
+          staggerChildren : 0.3
+        }
+      }
+    }
+
+    const titleVariants = {
+      hidden: { opacity: 0, x: -30 },
+      visible: {
+        opacity: 1,
+        x: 0,
+        transition: {
+          duration: 0.5,
+          ease: "easeOut"
+        }
+      }
+    }
+
+    const paragraphVariants = {
+      hidden: { opacity: 0, x: -20 },
+      visible: {
+        opacity: 1,
+        x: 0,
+        transition: {
+          duration: 0.5,
+          ease: "easeOut",
+          delay: 0.3 // Délai supplémentaire après l'animation du titre
+        }
+      }
+    }
+
+    const containerVariants = {
+      hidden : {
+        opacity : 0,
+      },
+      visible : {
+        opacity : 1,
+        transition : {
+          staggerChildren : 0.3,
+          delayChildren : 0.4
+        }
+      }
+    }
+
+    const itemVariants = {
+      hidden: {
+        opacity : 0,
+        x:-50,
+      },
+      visible : {
+        opacity : 1,
+        x: 0,
+        transition : {
+          duration: 0.6,
+          ease : "easeOut"
+        }
+      }
+    }
+
     const [projects] = useState([
         {
           id: 1,
@@ -48,20 +123,26 @@ export const ProjectSection = () => {
 
   return (
     <div className="bg-white">
-      <main className="max-w-7xl mx-auto px-2 py-12">
-        <header className="mb-16 flex items-center justify-between">
-          <div className='flex flex-col gap-2'>
+      <div className="max-w-7xl mx-auto px-2 py-12">
+        <motion.div 
+        ref={headerRef}
+        variants={headerContainerVariants}
+        initial="hidden"
+        animate={headerInView ? "visible" : "hidden"}
+        className="mb-16 flex items-end justify-between"
+        >
+          <motion.div className='flex flex-col gap-2' variants={titleVariants}>
             <span className='bg-orange-custom/80 py-2 px-3 inline-block rounded-full w-fit text-white text-sm'>Cas clients</span>
             <h1 className="text-4xl font-serif font-bold text-gray-900 md:text-5xl">
               Nos réalisations pour professionnels terrain
             </h1>
-          </div>
-          <p className='text-lg max-w-xl text-center bg-gradient-to-b from-black to-black/60 inline-block text-transparent bg-clip-text'>Découvrez quelques exemples d'écosystèmes digitaux que nous avons développés pour des entreprises de service terrain. Chaque projet est conçu pour répondre aux défis spécifiques de nos clients.</p>
-        </header>
+          </motion.div>
+          <motion.p variants={paragraphVariants} className='text-lg max-w-xl text-center bg-gradient-to-b from-black to-black/60 inline-block text-transparent bg-clip-text'>Découvrez quelques exemples d'écosystèmes digitaux que nous avons développés pour des entreprises de service terrain. Chaque projet est conçu pour répondre aux défis spécifiques de nos clients.</motion.p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {projects.map((project) => (
-            <div key={project.id} className="relative bg-gray-100 rounded-lg overflow-hidden">
+        <motion.div ref={projectsRef} variants={containerVariants} initial="hidden" animate={projectsInView ? "visible" : "hidden"} className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          {projects.map((project) => ( 
+            <motion.div variants={itemVariants} key={project.id} className="relative bg-gray-100 rounded-lg overflow-hidden">
               <div className="aspect-w-16 aspect-h-12 relative">
                 {/* Affichage de l'image avec fallback */}
                 <img 
@@ -115,10 +196,10 @@ export const ProjectSection = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </main>
+        </motion.div>
+      </div>
     </div>
   );
 }

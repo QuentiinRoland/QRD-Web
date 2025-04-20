@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const FAQItem = ({ question, answer, isOpen, onClick }) => {
   // Fonction pour formater le texte avec des listes à puces
@@ -10,7 +11,6 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
     const paragraphs = text.split('\n\n');
     
     return paragraphs.map((paragraph, i) => {
-      // Vérifier si le paragraphe contient des points de liste
       if (paragraph.includes('\n')) {
         const lines = paragraph.split('\n');
         const title = lines[0]; // Premier élément comme titre
@@ -27,7 +27,6 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
           </div>
         );
       } else {
-        // Paragraphe normal
         return <p key={i} className="mb-3">{paragraph}</p>;
       }
     });
@@ -40,16 +39,26 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
         onClick={onClick}
       >
         <h3 className="text-black text-xl font-medium">{question}</h3>
-        <span>{isOpen ? 
-          <ChevronUp size={20} className="text-gray-400" /> : 
+        <motion.span 
+        initial={false}
+        animate={{rotate: isOpen ? 180 : 0}}
+        transition={{duration : 0.3}}
+        >
           <ChevronDown size={20} className="text-gray-400" />
-        }</span>
+        </motion.span>
       </div>
-      {isOpen && (
-        <div className="mt-4 text-gray-600 text-lg">
-          {formatAnswer(answer)}
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+          initial={{height : 0, opacity:0}}
+          animate={{height: "auto", opacity:1}}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="mt-4 text-gray-600 text-lg">
+            {formatAnswer(answer)}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -103,7 +112,7 @@ Lors de notre appel découverte, nous réaliserons une estimation personnalisée
 
   return (
     <div className="bg-white text-black p-12">
-      <div className="flex items-center justify-between max-w-7xl mx-auto">
+      <div className="flex items-start justify-between max-w-7xl mx-auto">
         <div className="w-1/2 flex flex-col gap-4">
             <div className='w-full'>
                 <span className='bg-purple-custom/80 py-2 px-3 inline-block rounded-full w-fit text-white text-sm'>FAQ</span>

@@ -16,6 +16,10 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const openCalendly = () => {
+    window.open('https://calendly.com/rolandigital-info/30min', '_blank', 'noopener,noreferrer')
+  }
+
   return (
     <div className={`fixed top-0 left-0 right-0 z-30 transition-all duration-300 ${isTransparent ? 'bg-transparent' : 'bg-black shadow-md'}`}>
         <div className='max-w-7xl mx-auto flex items-center h-[70px] relative'>
@@ -38,7 +42,7 @@ const Navbar = () => {
             </button>
             
             <div className={`hidden md:inline-block ml-auto p-[2px] relative rounded-full ${isTransparent ? 'bg-white' :'bg-gradient-to-r from-violet-custom via-purple-custom to-orange-custom'}`}>
-                <button className={`${isTransparent ? ' text-black' : 'bg-black text-white '} font-medium py-2 px-4 rounded-full relative z-1`}>
+                <button onClick={() => openCalendly()} className={`${isTransparent ? ' text-black' : 'bg-black text-white '} font-medium py-2 px-4 rounded-full relative z-1`}>
                     Consultation gratuite
                 </button>
             </div>

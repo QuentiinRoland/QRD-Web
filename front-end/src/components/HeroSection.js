@@ -12,6 +12,10 @@ const HeroSection = () => {
     triggerOnce: true
   });
 
+  const openCalendly = () => {
+    window.open('https://calendly.com/rolandigital-info/30min', '_blank', 'noopener,noreferrer')
+  }
+
   useEffect(() => {
     if (inView) {
       controls.start('visible');
@@ -97,7 +101,7 @@ const HeroSection = () => {
             whileTap={{ scale: 0.98 }}
             className="inline-flex w-fit relative p-[2px] bg-gradient-to-r from-violet-custom via-purple-custom to-orange-custom rounded-full"
           >
-            <button className="bg-black text-white font-medium py-4 px-8 rounded-full relative z-10">
+            <button onClick={() => openCalendly()} className="bg-black text-white font-medium py-4 px-8 rounded-full relative z-10">
               Book a free discovery call (15 min)
             </button>
           </motion.div>
