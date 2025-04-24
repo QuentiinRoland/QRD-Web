@@ -40,7 +40,7 @@ const OfferSection = () => {
   };
 
   return (
-    <div className='flex flex-col max-w-7xl mx-auto py-24'>
+    <div id="services" className='flex flex-col max-w-7xl mx-auto py-12 md:py-24 px-4'>
       <motion.div 
         className='flex flex-col justify-center items-center gap-2 mb-8'
         initial={{ opacity: 0, y: -20 }}
@@ -56,7 +56,7 @@ const OfferSection = () => {
           Solutions
         </motion.span>
         <motion.h2 
-          className='text-4xl font-bold'
+          className='text-3xl md:text-4xl font-bold text-center'
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.4, delay: 0.2 }}
@@ -64,7 +64,7 @@ const OfferSection = () => {
           Nos solutions Digitales
         </motion.h2>
         <motion.p 
-          className='text-lg max-w-xl text-center bg-gradient-to-b from-black to-black/60 inline-block text-transparent bg-clip-text'
+          className='text-base md:text-lg max-w-xl text-center bg-gradient-to-b from-black to-black/60 inline-block text-transparent bg-clip-text'
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.4, delay: 0.3 }}
@@ -78,80 +78,72 @@ const OfferSection = () => {
         variants={containerVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
-        className='grid gap-4' 
-        style={{
-          gridTemplateColumns: '1fr 1fr 1fr 1fr',
-          gridTemplateRows: 'auto auto auto auto',
-          gridTemplateAreas: `
-            "web web seo seo "
-            "app eco eco dash"
-          `
-        }}
+        className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'
       >
+        {/* Web - 2 colonnes sur desktop */}
         <motion.div 
-          style={{ gridArea: 'web' }}
+          className="overflow-hidden rounded-lg col-span-1 sm:col-span-1 lg:col-span-2"
           variants={itemVariants}
-          className="overflow-hidden rounded-lg"
         >
           <motion.img 
             src='/WebsiteCreation.png' 
             alt='Création de site web' 
-            className='w-full transition duration-500 hover:scale-105' 
+            className='w-full h-full object-cover' 
             whileHover={{ scale: 1.03 }}
           />
         </motion.div>
+        
+        {/* SEO - 2 colonnes sur desktop */}
         <motion.div 
-          style={{ gridArea: 'seo' }}
+          className="overflow-hidden rounded-lg col-span-1 sm:col-span-1 lg:col-span-2"
           variants={itemVariants}
-          className="overflow-hidden rounded-lg"
         >
           <motion.img 
             src='/SeoOptimisation.png' 
             alt='Optimisation SEO' 
-            className='w-full' 
+            className='w-full h-full object-cover' 
             whileHover={{ scale: 1.03 }}
           />
         </motion.div>
+        
+        {/* App - 1 colonne sur desktop */}
         <motion.div 
-          style={{ gridArea: 'app' }}
+          className="overflow-hidden rounded-lg col-span-1"
           variants={itemVariants}
-          className="overflow-hidden rounded-lg"
         >
           <motion.img 
             src='/FieldMobileApp.png' 
             alt='Application mobile terrain' 
-            className='w-full' 
+            className='w-full h-full object-cover' 
             whileHover={{ scale: 1.03 }}
           />
         </motion.div>
         
+        {/* Eco - 2 colonnes sur desktop */}
         <motion.div 
-          style={{ gridArea: 'eco' }}
+          className="overflow-hidden rounded-lg col-span-1 sm:col-span-1 lg:col-span-2"
           variants={itemVariants}
-          className="overflow-hidden rounded-lg"
         >
           <motion.img 
             src='/Ecosystem.png' 
             alt='Écosystème digital' 
-            className='w-full' 
+            className='w-full ' 
             whileHover={{ scale: 1.03 }}
           />
         </motion.div>
         
+        {/* Dash - 1 colonne sur desktop */}
         <motion.div 
-          style={{ gridArea: 'dash' }}
+          className="overflow-hidden rounded-lg col-span-1"
           variants={itemVariants}
-          className="overflow-hidden rounded-lg"
         >
           <motion.img 
             src='/Management.png' 
             alt='Tableau de bord' 
-            className='w-full' 
+            className='w-full h-full object-cover' 
             whileHover={{ scale: 1.03 }}
           />
         </motion.div>
-        
-       
       </motion.div>
     </div>
   );

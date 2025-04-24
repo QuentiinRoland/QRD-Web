@@ -58,40 +58,40 @@ const HeroSection = () => {
         variants={containerVariants}
         initial="hidden"
         animate={controls}
-        className="flex-1 flex items-center max-w-7xl mx-auto relative z-10 w-full py-24"
+        className="flex-1 flex items-center max-w-7xl mx-auto relative z-10 w-full py-12 md:py-24 px-4 md:px-6"
       >
         <div className='flex flex-col w-full md:w-2/3 gap-4'>
           <motion.h1 
             variants={itemVariants}
-            className="text-6xl font-semibold leading-tight max-w-3xl mb-4 bg-gradient-to-b from-white to-white/70 text-transparent bg-clip-text inline-block"
+            className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight max-w-3xl mb-4 bg-gradient-to-b from-white to-white/70 text-transparent bg-clip-text inline-block"
           >
-            Transform your field expertise into a digital empire
+            Transformez votre expertise terrain en empire digital
           </motion.h1>
 
           <motion.p 
             variants={itemVariants}
-            className="text-white text-xl max-w-3xl mb-6"
+            className="text-white text-base sm:text-lg md:text-xl max-w-3xl mb-6"
           >
-            Our digital ecosystem turns wasted hours on paperwork into growth opportunities, with tools designed by and for field professionals.
+            Notre écosystème digital transforme les heures perdues en paperasse en véritables opportunités de croissance, avec des outils pensés par et pour les professionnels de terrain.
           </motion.p>
 
           <motion.div 
             variants={itemVariants}
-            className='flex gap-4 text-white mb-6'
+            className='flex flex-wrap gap-4 text-white mb-6'
           >
             <div className='flex gap-2 items-center'>
-              <img src='/internet.png' width={30} height={30} alt="Internet"/>
-              <p>Websites</p>
+              <img src='/internet.png' width={24} height={24} alt="Sites internet" className="w-6 h-6 md:w-8 md:h-8"/>
+              <p className="text-sm md:text-base">Sites internet</p>
             </div>
-            <p>•</p>
+            <p className="hidden sm:block">•</p>
             <div className='flex gap-2 items-center'>
-              <img src='/setting.png' width={30} height={30} alt="Applications"/>
-              <p>Mobile apps</p>
+              <img src='/setting.png' width={24} height={24} alt="Applications mobiles" className="w-6 h-6 md:w-8 md:h-8"/>
+              <p className="text-sm md:text-base">Applications mobiles</p>
             </div>
-            <p>•</p>
+            <p className="hidden sm:block">•</p>
             <div className='flex gap-2 items-center'>
-              <img src='/develop.png' width={30} height={30} alt="Solutions"/>
-              <p>Digital solutionss</p>
+              <img src='/develop.png' width={24} height={24} alt="Solutions digitales" className="w-6 h-6 md:w-8 md:h-8"/>
+              <p className="text-sm md:text-base">Solutions digitales</p>
             </div>
           </motion.div>
 
@@ -101,22 +101,25 @@ const HeroSection = () => {
             whileTap={{ scale: 0.98 }}
             className="inline-flex w-fit relative p-[2px] bg-gradient-to-r from-violet-custom via-purple-custom to-orange-custom rounded-full"
           >
-            <button onClick={() => openCalendly()} className="bg-black text-white font-medium py-4 px-8 rounded-full relative z-10">
-              Book a free discovery call (15 min)
+            <button 
+              onClick={() => openCalendly()} 
+              className="bg-black text-white font-medium py-3 px-5 sm:py-4 sm:px-8 rounded-full relative z-10 text-sm sm:text-base"
+            >
+              Réservez un appel découverte gratuit (30 min)
             </button>
           </motion.div>
         </div>
       </motion.div>
 
-     <div className="w-full py-8 bg-black/20 backdrop-blur-sm border-t border-white/10">
-        <div className='max-w-7xl mx-auto flex items-center justify-between gap-12 px-4'>
-          <div className='flex flex-col gap-2'>
-            <h2 className='text-xl font-medium  text-white'>Trusted by field companies across all industries.</h2>
-            <p className='text-md font-medium bg-gradient-to-b from-white to-white/50 text-transparent inline-block bg-clip-text'>From independent contractors to large maintenance firms.</p>
+      <div className="w-full py-6 md:py-8 bg-black/20 backdrop-blur-sm border-t border-white/10">
+        <div className='max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 px-4'>
+          <div className='flex flex-col gap-2 text-center md:text-left mb-4 md:mb-0'>
+            <h2 className='text-lg md:text-xl font-medium text-white'>De nombreuses entreprises de terrain nous font confiance.</h2>
+            <p className='text-sm md:text-md font-medium bg-gradient-to-b from-white to-white/50 text-transparent inline-block bg-clip-text'>Des indépendants aux grandes sociétés de maintenance.</p>
           </div>
-          <div className="overflow-hidden max-w-[800px] h-[80px]">
+          <div className="overflow-hidden max-w-full md:max-w-[800px] h-[60px] md:h-[80px]">
             <motion.div
-              className='flex items-center gap-12'
+              className='flex items-center gap-6 md:gap-12'
               animate={{ x: ['0%', '-50%'] }}
               transition={{
                 duration: 20,
@@ -126,14 +129,17 @@ const HeroSection = () => {
             >
               {duplicatedLogos.map((partner, idx) => (
                 <div key={idx} className='flex-shrink-0'>
-                  <img src={partner.picture} alt={partner.picture} width={120} height={120} className='object-contain grayscale hover:grayscale-0 transition'/>
+                  <img 
+                    src={partner.picture} 
+                    alt={partner.picture} 
+                    className='object-contain grayscale hover:grayscale-0 transition w-[80px] h-[80px] md:w-[120px] md:h-[120px]'
+                  />
                 </div>
               ))}
             </motion.div>
           </div>
         </div>
       </div>
-    
     </div>
   );
 };

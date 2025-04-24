@@ -56,42 +56,42 @@ const ProblemsSolutionsToggle = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className={`max-w-7xl mx-auto flex flex-col justify-center items-center text-white py-24 rounded-lg transition-all duration-500`}
+          className="max-w-7xl mx-auto flex flex-col justify-center items-center text-white py-12 md:py-24 px-4 rounded-lg transition-all duration-500"
         >
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
-            className="mb-4 transition-all duration-500 flex flex-col justify-center items-center gap-2 text-center"
+            className="mb-4 transition-all duration-500 flex flex-col justify-center items-center gap-2 text-center px-4"
           >
             <motion.span 
               layout
-              className={`text-sm font-semibold bg-white py-3 px-3 rounded-full w-fit ${!showSolutions ? 'text-red-600' : 'text-green-600'}`}
+              className={`text-sm font-semibold bg-white py-2 sm:py-3 px-3 rounded-full w-fit ${!showSolutions ? 'text-red-600' : 'text-green-600'}`}
             >
               {activeInfo.subtitle}
             </motion.span>
             <motion.h2 
               layout
-              className={`text-4xl font-bold mb-1 ${accentColor}`}
+              className={`text-3xl md:text-4xl font-bold mb-1 ${accentColor}`}
             >
               {activeInfo.title}
             </motion.h2>
             <motion.p 
               layout
-              className="max-w-3xl mx-auto text-gray-300 text-lg"
+              className="max-w-3xl mx-auto text-gray-300 text-base md:text-lg"
             >
               {activeInfo.description}
             </motion.p>
           </motion.div>
   
           <motion.div 
-            className="bg-gray-800 p-1 rounded-full inline-flex mb-12"
+            className="bg-gray-800 p-1 rounded-full inline-flex mb-8 md:mb-12"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             <motion.button 
-              className={`px-6 py-2 rounded-full transition-all ${!showSolutions ? 'bg-red-600 text-white' : 'text-gray-400'}`}
+              className={`px-4 sm:px-6 py-2 rounded-full transition-all text-sm sm:text-base ${!showSolutions ? 'bg-red-600 text-white' : 'text-gray-400'}`}
               onClick={() => setShowSolutions(false)}
               whileHover={{ scale: !showSolutions ? 1 : 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -99,7 +99,7 @@ const ProblemsSolutionsToggle = () => {
               Problèmes
             </motion.button>
             <motion.button 
-              className={`px-6 py-2 rounded-full transition-all ${showSolutions ? 'bg-green-600 text-white' : 'text-gray-400'}`}
+              className={`px-4 sm:px-6 py-2 rounded-full transition-all text-sm sm:text-base ${showSolutions ? 'bg-green-600 text-white' : 'text-gray-400'}`}
               onClick={() => setShowSolutions(true)}
               whileHover={{ scale: showSolutions ? 1 : 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -115,15 +115,15 @@ const ProblemsSolutionsToggle = () => {
               initial="hidden"
               animate="visible"
               exit="hidden"
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-4"
             >
               {activeData.map((item) => (
                 <motion.div 
                   key={item.id} 
                   variants={itemVariants}
-                  className={`p-6 rounded-lg border-t-2 ${borderColor} transition-all duration-300`}
+                  className={`p-4 sm:p-6 rounded-lg border-t-2 ${borderColor} transition-all duration-300`}
                   whileHover={{ 
-                    scale: 1.05, 
+                    scale: 1.03, 
                     boxShadow: "0 10px 30px rgba(0,0,0,0.15)", 
                     backgroundColor: "rgba(255,255,255,0.05)" 
                   }}
@@ -135,8 +135,8 @@ const ProblemsSolutionsToggle = () => {
                   >
                     {item.icon}
                   </motion.div>
-                  <h3 className={`text-xl font-bold mb-2 ${accentColor}`}>{item.name}</h3>
-                  <p className="text-gray-300 text-lg">{item.description}</p>
+                  <h3 className={`text-lg sm:text-xl font-bold mb-2 ${accentColor}`}>{item.name}</h3>
+                  <p className="text-gray-300 text-base sm:text-lg">{item.description}</p>
                 </motion.div>
               ))}
             </motion.div>

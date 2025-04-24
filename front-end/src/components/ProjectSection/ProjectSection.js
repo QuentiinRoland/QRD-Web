@@ -3,22 +3,21 @@ import { easeIn, motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 export const ProjectSection = () => {
-
     const [headerRef, headerInView] = useInView({
-      triggerOnce : true,
-      threshold : 0.1
+      triggerOnce: true,
+      threshold: 0.1
     })
     const [projectsRef, projectsInView] = useInView({
-      triggerOnce : true,
-      threshold : 0.2
+      triggerOnce: true,
+      threshold: 0.2
     })
 
     const headerContainerVariants = {
-      hidden: {opacity : 0},
-      visible : {
+      hidden: {opacity: 0},
+      visible: {
         opacity: 1,
-        transition : {
-          staggerChildren : 0.3
+        transition: {
+          staggerChildren: 0.3
         }
       }
     }
@@ -49,29 +48,29 @@ export const ProjectSection = () => {
     }
 
     const containerVariants = {
-      hidden : {
-        opacity : 0,
+      hidden: {
+        opacity: 0,
       },
-      visible : {
-        opacity : 1,
-        transition : {
-          staggerChildren : 0.3,
-          delayChildren : 0.4
+      visible: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.3,
+          delayChildren: 0.4
         }
       }
     }
 
     const itemVariants = {
       hidden: {
-        opacity : 0,
-        x:-50,
+        opacity: 0,
+        x: -50,
       },
-      visible : {
-        opacity : 1,
+      visible: {
+        opacity: 1,
         x: 0,
-        transition : {
+        transition: {
           duration: 0.6,
-          ease : "easeOut"
+          ease: "easeOut"
         }
       }
     }
@@ -122,27 +121,37 @@ export const ProjectSection = () => {
       ]);
 
   return (
-    <div className="bg-white">
-      <div className="max-w-7xl mx-auto px-2 py-12">
+    <div id="customers" className="bg-white">
+      <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
         <motion.div 
-        ref={headerRef}
-        variants={headerContainerVariants}
-        initial="hidden"
-        animate={headerInView ? "visible" : "hidden"}
-        className="mb-16 flex items-end justify-between"
+          ref={headerRef}
+          variants={headerContainerVariants}
+          initial="hidden"
+          animate={headerInView ? "visible" : "hidden"}
+          className="mb-8 md:mb-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-6 md:gap-0"
         >
-          <motion.div className='flex flex-col gap-2' variants={titleVariants}>
+          <motion.div className='flex flex-col gap-2 mb-4 md:mb-0' variants={titleVariants}>
             <span className='bg-orange-custom/80 py-2 px-3 inline-block rounded-full w-fit text-white text-sm'>Cas clients</span>
-            <h1 className="text-4xl font-serif font-bold text-gray-900 md:text-5xl">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900">
               Nos réalisations pour professionnels terrain
             </h1>
           </motion.div>
-          <motion.p variants={paragraphVariants} className='text-lg max-w-xl text-center bg-gradient-to-b from-black to-black/60 inline-block text-transparent bg-clip-text'>Découvrez quelques exemples d'écosystèmes digitaux que nous avons développés pour des entreprises de service terrain. Chaque projet est conçu pour répondre aux défis spécifiques de nos clients.</motion.p>
+          <motion.p variants={paragraphVariants} className='text-base md:text-lg max-w-full md:max-w-xl text-left md:text-center bg-gradient-to-b from-black to-black/60 inline-block text-transparent bg-clip-text'>Découvrez quelques exemples d'écosystèmes digitaux que nous avons développés pour des entreprises de service terrain. Chaque projet est conçu pour répondre aux défis spécifiques de nos clients.</motion.p>
         </motion.div>
 
-        <motion.div ref={projectsRef} variants={containerVariants} initial="hidden" animate={projectsInView ? "visible" : "hidden"} className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <motion.div 
+          ref={projectsRef} 
+          variants={containerVariants} 
+          initial="hidden" 
+          animate={projectsInView ? "visible" : "hidden"} 
+          className="grid grid-cols-1 gap-6 md:gap-8 md:grid-cols-2"
+        >
           {projects.map((project) => ( 
-            <motion.div variants={itemVariants} key={project.id} className="relative bg-gray-100 rounded-lg overflow-hidden">
+            <motion.div 
+              variants={itemVariants} 
+              key={project.id} 
+              className="relative bg-gray-100 rounded-lg overflow-hidden"
+            >
               <div className="aspect-w-16 aspect-h-12 relative">
                 {/* Affichage de l'image avec fallback */}
                 <img 
@@ -160,12 +169,12 @@ export const ProjectSection = () => {
                   {project.title}
                 </div>
               </div>
-              <div className="p-4">
+              <div className="p-3 md:p-4">
                 <div className="flex flex-wrap gap-2 mb-2">
                   {project.tags.map((tag, index) => (
                     <span 
                       key={index} 
-                      className="px-3 py-1 text-xs bg-gray-200 rounded-full text-gray-700"
+                      className="px-2 md:px-3 py-1 text-xs bg-gray-200 rounded-full text-gray-700"
                     >
                       {tag}
                     </span>
@@ -173,13 +182,13 @@ export const ProjectSection = () => {
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-lg font-bold">{project.title}</h3>
-                    <p className="text-gray-600">{project.description}</p>
+                    <h3 className="text-base md:text-lg font-bold">{project.title}</h3>
+                    <p className="text-sm md:text-base text-gray-600">{project.description}</p>
                   </div>
-                  <div className="h-8 w-8 rounded-full border border-gray-300 flex items-center justify-center">
+                  <div className="h-6 w-6 md:h-8 md:w-8 rounded-full border border-gray-300 flex items-center justify-center">
                     <svg 
-                      width="16" 
-                      height="16" 
+                      width="14" 
+                      height="14" 
                       viewBox="0 0 24 24" 
                       fill="none" 
                       xmlns="http://www.w3.org/2000/svg"

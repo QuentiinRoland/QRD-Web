@@ -2,7 +2,6 @@ import { animate, motion } from 'framer-motion';
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 
-
 const pricingData = [
   {
     id: 1,
@@ -71,7 +70,6 @@ export const PricingSection = () => {
     window.open('https://form.typeform.com/to/eBpeX9mS', '_blank', 'noopener,noreferrer')
   }
 
-
   const containerVariants = {
     hidden : {
       opacity : 0,
@@ -99,70 +97,92 @@ export const PricingSection = () => {
   };
 
   return (
-    <div className="bg-black text-white">
-      <div className="flex flex-col max-w-7xl mx-auto py-24 px-4">
-        <motion.div initial={{opacity :0}} whileInView={{opacity: 1}} viewport={{ once: true }} transition={{ duration: 0.5, ease:"easeOut" }}  className="flex flex-col gap-4 text-center items-center mb-12">
+    <div id="pricing" className="bg-black text-white">
+      <div className="flex flex-col max-w-7xl mx-auto py-12 sm:py-16 md:py-24 px-4">
+        <motion.div 
+          initial={{opacity :0}} 
+          whileInView={{opacity: 1}} 
+          viewport={{ once: true }} 
+          transition={{ duration: 0.5, ease:"easeOut" }}  
+          className="flex flex-col gap-4 text-center items-center mb-8 md:mb-12"
+        >
           <span className='bg-violet-custom/80 py-2 px-3 inline-block rounded-full w-fit text-white text-sm'>Nos tarifs</span>
-          <h2 className="text-4xl font-bold">Des solutions digitales professionnelles à prix transparent</h2>
-          <p className="bg-gradient-to-b from-white to-white/50 inline-block text-transparent bg-clip-text text-xl max-w-3xl mx-auto">Nous créons des outils numériques adaptés aux besoins des entrepreneurs, artisans et professionnels. Choisissez la solution qui correspond à vos ambitions et à votre budget.</p>
+          <h2 className="text-3xl md:text-4xl font-bold">Des solutions digitales professionnelles à prix transparent</h2>
+          <p className="bg-gradient-to-b from-white to-white/50 inline-block text-transparent bg-clip-text text-base md:text-xl max-w-3xl mx-auto">Nous créons des outils numériques adaptés aux besoins des entrepreneurs, artisans et professionnels. Choisissez la solution qui correspond à vos ambitions et à votre budget.</p>
         </motion.div>
         
-        <motion.div ref={planRef} initial="hidden" animate={planInView ? "visible" : "hidden"} variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div 
+          ref={planRef} 
+          initial="hidden" 
+          animate={planInView ? "visible" : "hidden"} 
+          variants={containerVariants} 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {pricingData.map((plan) => (
-            <motion.div key={plan.id} variants={itemVariants} className="relative h-[680px] overflow-hidden">
+            <motion.div 
+              key={plan.id} 
+              variants={itemVariants} 
+              className="relative h-[600px] sm:h-[640px] md:h-[680px] overflow-hidden"
+            >
               <img 
                 src={plan.imageSrc} 
                 alt={plan.title} 
-                className="absolute inset-0 w-full h-full"
+                className="absolute inset-0 w-full h-full object-cover"
               />
               
               <div className="absolute inset-0">
-                <div className="absolute top-[60px] left-0 right-0 px-6">
-                  <h3 className="text-3xl font-bold mb-2 text-center">{plan.title}</h3>
-                  <p className="bg-gradient-to-b from-white to-white/50 inline-block text-transparent bg-clip-text text-base mb-4 text-center px-8">{plan.description}</p>
+                <div className="absolute top-[40px] sm:top-[50px] md:top-[60px] left-0 right-0 px-4 sm:px-6">
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-2 text-center">{plan.title}</h3>
+                  <p className="bg-gradient-to-b from-white to-white/50 inline-block text-transparent bg-clip-text text-sm sm:text-base mb-4 text-center px-2 sm:px-8">{plan.description}</p>
                 </div>
                 
-                <div className="absolute top-[245px] left-0 right-0 px-6">
-                  <button onClick={() => openTypeform()}className="bg-transparent text-white py-3 px-4 w-full text-center text-base">
+                <div className="absolute top-[215px] sm:top-[230px] md:top-[245px] left-0 right-0 px-4 sm:px-6">
+                  <button 
+                    onClick={() => openTypeform()}
+                    className="bg-transparent text-white py-2 sm:py-3 px-3 sm:px-4 w-full text-center text-sm sm:text-base"
+                  >
                     {plan.buttonText}
                   </button>
                 </div>
                 
-                <div className="absolute top-[340px] left-20 right-0">
-                  <ul className="flex flex-col gap-[24px]">
+                <div className="absolute top-[300px] sm:top-[320px] md:top-[340px] left-10 sm:left-16 md:left-20 right-0">
+                  <ul className="flex flex-col gap-[16px] sm:gap-[20px] md:gap-[24px]">
                     {plan.features.map((feature, index) => (
-                      <li key={index} className={`flex items-star† ${
-                        plan.id === 1 && index === 5 ? 'relative -top-3 left-1' : 
-                        plan.id === 2 && index === 3 ? 'relative -top-2 left-1' :
-                        plan.id === 2 && index === 4 ? 'relative -top-4' :
-                        plan.id === 2 && index === 5 ? 'relative -top-4' :
-                        plan.id === 3 && index === 1 ? 'relative -top-2 left-1' : 
-                        plan.id === 3 && index === 2 ? 'relative -top-4' : 
-                        plan.id === 3 && index === 3 ? 'relative -top-4' : 
-                        plan.id === 3 && index === 4 ? 'relative -top-4' : 
-                        plan.id === 3 && index === 5 ? 'relative -top-4' : ''
-                      }`}>
+                      <li 
+                        key={index} 
+                        className={`flex items-start ${
+                          plan.id === 1 && index === 5 ? 'relative -top-1 sm:-top-2 md:-top-3 left-1' : 
+                          plan.id === 2 && index === 3 ? 'relative -top-1 sm:-top-1 md:-top-2 left-1' :
+                          plan.id === 2 && index === 4 ? 'relative -top-2 sm:-top-3 md:-top-4' :
+                          plan.id === 2 && index === 5 ? 'relative -top-2 sm:-top-3 md:-top-4' :
+                          plan.id === 3 && index === 1 ? 'relative -top-1 sm:-top-1 md:-top-2 left-1' : 
+                          plan.id === 3 && index === 2 ? 'relative -top-2 sm:-top-3 md:-top-4' : 
+                          plan.id === 3 && index === 3 ? 'relative -top-2 sm:-top-3 md:-top-4' : 
+                          plan.id === 3 && index === 4 ? 'relative -top-2 sm:-top-3 md:-top-4' : 
+                          plan.id === 3 && index === 5 ? 'relative -top-2 sm:-top-3 md:-top-4' : ''
+                        }`}
+                      >
                         <div className="w-6 h-6 flex items-center justify-center opacity-0">
                           <div className="w-5 h-5"></div>
                         </div>
-                        <span className="text-sm">{feature}</span>
+                        <span className="text-xs sm:text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 
-                <div className='absolute bottom-6 left-0 right-0 flex items-center justify-center gap-2'>
-                    <img src='/clock.png' alt='clock icon' width={16} height={16} />
-                    <div className="bg-gradient-to-b from-white to-white/50 inline-block text-transparent bg-clip-text bottom-6 left-0 right-0 text-center text-sm">
+                <div className='absolute bottom-4 sm:bottom-5 md:bottom-6 left-0 right-0 flex items-center justify-center gap-2'>
+                  <img src='/clock.png' alt='clock icon' width={16} height={16} />
+                  <div className="bg-gradient-to-b from-white to-white/50 inline-block text-transparent bg-clip-text text-center text-xs sm:text-sm">
                     {plan.deliveryTime}
-                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
           ))}
         </motion.div>
         
-        <div className="text-center mt-8 text-sm opacity-70">
+        <div className="text-center mt-6 md:mt-8 text-xs sm:text-sm opacity-70">
           * La maintenance illimitée comprend les mises à jour de sécurité et le support technique par email.
         </div>
       </div>

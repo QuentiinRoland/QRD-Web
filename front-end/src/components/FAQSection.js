@@ -33,28 +33,30 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
   };
   
   return (
-    <div className="border-b border-gray-200 py-4">
+    <div className="border-b border-gray-200 py-3 md:py-4">
       <div 
         className="flex justify-between items-center cursor-pointer" 
         onClick={onClick}
       >
-        <h3 className="text-black text-xl font-medium">{question}</h3>
+        <h3 className="text-black text-base md:text-xl font-medium pr-2">{question}</h3>
         <motion.span 
-        initial={false}
-        animate={{rotate: isOpen ? 180 : 0}}
-        transition={{duration : 0.3}}
+          initial={false}
+          animate={{rotate: isOpen ? 180 : 0}}
+          transition={{duration : 0.3}}
+          className="flex-shrink-0"
         >
-          <ChevronDown size={20} className="text-gray-400" />
+          <ChevronDown size={16} className="text-gray-400 md:w-5 md:h-5" />
         </motion.span>
       </div>
       <AnimatePresence>
         {isOpen && (
           <motion.div 
-          initial={{height : 0, opacity:0}}
-          animate={{height: "auto", opacity:1}}
-          exit={{ height: 0, opacity: 0 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="mt-4 text-gray-600 text-lg">
+            initial={{height : 0, opacity:0}}
+            animate={{height: "auto", opacity:1}}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="mt-2 md:mt-4 text-gray-600 text-sm md:text-lg"
+          >
             {formatAnswer(answer)}
           </motion.div>
         )}
@@ -111,29 +113,29 @@ Lors de notre appel découverte, nous réaliserons une estimation personnalisée
   };
 
   return (
-    <div className="bg-white text-black p-12">
-      <div className="flex items-start justify-between max-w-7xl mx-auto">
-        <div className="w-1/2 flex flex-col gap-4">
-            <div className='w-full'>
-                <span className='bg-purple-custom/80 py-2 px-3 inline-block rounded-full w-fit text-white text-sm'>FAQ</span>
-                <h2 className="text-3xl font-bold mb-2">Questions fréquentes</h2>
-                <p className="text-black max-w-md text-lg">Nous avons rassemblé les questions les plus fréquentes de nos clients à propos de nos solutions. Si vous ne trouvez pas la réponse à votre question, n'hésitez pas à nous contacter directement pour un échange personnalisé.</p>
-            </div>
-            <div className='flex gap-4'>
-                <a href='/'><img src='/iconInstagram.png' className='w-[40px] h-[40px]' /></a>
-                <a href='/'><img src='/iconLinkedin.png' className='w-[40px] h-[40px]' /></a>
-                <a href='/'><img src='/iconFacebook.png' className='w-[40px] h-[40px]' /></a>
-            </div>
+    <div id="faq" className="bg-white text-black p-4 sm:p-8 md:p-12">
+      <div className="flex flex-col md:flex-row items-start justify-between max-w-7xl mx-auto gap-8 md:gap-6">
+        <div className="w-full md:w-1/2 md:sticky md:top-20 self-start">
+          <div className='w-full'>
+            <span className='bg-purple-custom/80 py-2 px-3 inline-block rounded-full w-fit text-white text-sm'>FAQ</span>
+            <h2 className="text-2xl md:text-3xl font-bold mb-2">Questions fréquentes</h2>
+            <p className="text-black max-w-md text-base md:text-lg">Nous avons rassemblé les questions les plus fréquentes de nos clients à propos de nos solutions. Si vous ne trouvez pas la réponse à votre question, n'hésitez pas à nous contacter directement pour un échange personnalisé.</p>
+          </div>
+          <div className='flex gap-4'>
+            <a href='/'><img src='/iconInstagram.png' className='w-[32px] h-[32px] md:w-[40px] md:h-[40px]' /></a>
+            <a href='/'><img src='/iconLinkedin.png' className='w-[32px] h-[32px] md:w-[40px] md:h-[40px]' /></a>
+            <a href='/'><img src='/iconFacebook.png' className='w-[32px] h-[32px] md:w-[40px] md:h-[40px]' /></a>
+          </div>
         </div>
         
-        <div className="w-1/2 space-y-1">
+        <div className="w-full md:w-1/2 space-y-1">
           {faqData.map((item, index) => (
             <FAQItem 
-                key={index}
-                question={item.question}
-                answer={item.answer}
-                isOpen={openItem === index}
-                onClick={() => toggleItem(index)}
+              key={index}
+              question={item.question}
+              answer={item.answer}
+              isOpen={openItem === index}
+              onClick={() => toggleItem(index)}
             />
           ))}
         </div>

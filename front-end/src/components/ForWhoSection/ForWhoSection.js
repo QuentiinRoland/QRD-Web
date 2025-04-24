@@ -4,8 +4,8 @@ import SectorsTable from '../ForWhoSection/Sectors';
 
 const ForWhoSection = () => {
   return (
-    <div className="max-w-7xl mx-auto py-24 px-4">
-      <div className="flex flex-col md:flex-row gap-16">
+    <div className="max-w-7xl mx-auto py-12 sm:py-16 md:py-24 px-4">
+      <div className="flex flex-col md:flex-row gap-8 md:gap-16">
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -27,7 +27,7 @@ const ForWhoSection = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-gray-800"
+            className="text-2xl sm:text-3xl font-bold text-gray-800"
           >
             Pour qui est conçue notre solution ?
           </motion.h2>
@@ -36,7 +36,7 @@ const ForWhoSection = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.6 }}
             viewport={{ once: true }}
-            className="text-lg leading-relaxed pt-2 text-gray-700"
+            className="text-base sm:text-lg leading-relaxed pt-2 text-gray-700"
           >
             Nos écosystèmes digitaux sont spécialement développés pour révolutionner le quotidien des professionnels de terrain. 
             Que vous soyez un <span className="font-semibold">artisan indépendant</span> cherchant à maximiser votre efficacité, 
