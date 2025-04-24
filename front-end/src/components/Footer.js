@@ -37,7 +37,7 @@ const Footer = () => {
         </div>
         <div className='absolute top-[210px] left-0 right-0 border border-white'></div>
         <div className="absolute top-[225px] w-full">
-            <div className="container mx-auto flex justify-between items-start">
+            <div className="container mx-auto flex justify-between items-end">
                 <div className="text-white flex flex-col gap-1 w-1/2">
                     <h3 className="text-lg font-medium">Ne manquez aucune astuce terrains</h3>
                     <p className="max-w-sm bg-gradient-to-b from-white to-white/60 inline-block text-transparent bg-clip-text">Recevez nos conseils d'optimisation, études de cas et nouveautés digitales pour professionnels terrain.</p>
